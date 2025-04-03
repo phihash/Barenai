@@ -20,10 +20,17 @@ document.addEventListener("DOMContentLoaded",() => {
         }else{
           alert("すでにこのタブの情報は保存されています");
         }
-
       });
     });
 
+  });
 
+  resetButton.addEventListener("click",() => {
+    const confirmed = confirm("保存しているデータを消去しますか?");
+    if(confirmed){
+      chrome.storage.local.remove("shadowBookmarks",() => {
+        alert("消去しました");
+      });
+    }
   });
 });
