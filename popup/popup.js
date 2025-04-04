@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded",() => {
   const resetButton = document.getElementById("resetButton");
 
   saveButton.addEventListener("click",() => {
-
     chrome.tabs.query({active:true,currentWindow:true},(tabs) => {
       const currentTab = tabs[0]; //tab全体の情報
       if(!currentTab) return;
@@ -22,7 +21,10 @@ document.addEventListener("DOMContentLoaded",() => {
         }
       });
     });
+  });
 
+  openListButton.addEventListener("click",() => {
+    chrome.runtime.openOptionsPage();
   });
 
   resetButton.addEventListener("click",() => {
