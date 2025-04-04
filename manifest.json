@@ -3,7 +3,7 @@
   "name": "ShadowExtension",
   "version": "1.0.0",
   "description": "履歴に残したくないURLを保存。ページ離脱時に自動で履歴削除するChrome拡張機能",
-"background": {
+  "background": {
     "service_worker": "background.js"
   },
   "action": {
@@ -15,6 +15,10 @@
     }
   },
   "permissions": ["storage","tabs","history"],
+  "host_permissions": [
+  "<all_urls>"
+  ],
+  "options_page": "options/options.html",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
