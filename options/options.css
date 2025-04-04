@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.title{
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.sub-title{
+  text-align: center;
+  padding: 0.4rem 0;
+}
+
+
+.saved-urls{
+  max-width: 1240px;
+  margin: 2rem;
+}
+
+
+.site-title{
+  font-size: 1rem;
+  padding-top: 1.2rem;
+  font-weight: 600;
+}
+
+.site-url{
+  font-size: 0.8rem;
+  padding-top: 0.3rem;
+  font-weight: 500;
+}
