@@ -1,0 +1,24 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+
+}
+
+.title{
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.sub-title{
+  text-align: center;
+  padding: 0.4rem 0;
+}
+
+
+.saved-urls{
+  max-width: 1240px;
+  margin: 2rem;
+}
+
