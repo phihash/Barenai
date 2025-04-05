@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded",() => {
   const saveButton = document.getElementById("saveButton");
   const openListButton = document.getElementById("openListButton");
+  const openBlackListButton = document.getElementById("openBlackListButton");
   const resetButton = document.getElementById("resetButton");
 
   saveButton.addEventListener("click",() => {
@@ -25,6 +26,10 @@ document.addEventListener("DOMContentLoaded",() => {
 
   openListButton.addEventListener("click",() => {
     chrome.runtime.openOptionsPage();
+  });
+
+  openBlackListButton.addEventListener("click",() => {
+    window.open("../blacklist/blacklist.html");
   });
 
   resetButton.addEventListener("click",() => {
