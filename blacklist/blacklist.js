@@ -26,7 +26,6 @@ const handleAdd = () => {
   })
 }
 
-
 const handleDelete = (domain) => {
   chrome.storage.local.get(["shadowDomains"], (results) => {
     let domains = results.shadowDomains || [];
@@ -40,6 +39,7 @@ const handleDelete = (domain) => {
 const renderDomains = () => {
   const savedDomains = document.getElementById("savedDomains");
   savedDomains.innerHTML = ""; // 一旦クリア
+  document.getElementById("domainInput").value = ""; // 入力フィールドをクリア
   chrome.storage.local.get(["shadowDomains"],(results) => {
     let domains = results.shadowDomains || [];
     if(domains.length === 0){
