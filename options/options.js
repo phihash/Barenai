@@ -27,6 +27,9 @@ const createBookmarkUI = (bookmark,onDelete) => {
    const li = document.createElement("li");
    const a = document.createElement("a");
    const deleteButton = document.createElement("button");
+   deleteButton.className = "button";
+   li.className = "list-item";
+   a.className = "text";
    a.href = url;
    a.target = "_blank";
    a.textContent = title;
