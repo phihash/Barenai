@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded",() => {
   const saveButton = document.getElementById("saveButton");
   const openListButton = document.getElementById("openListButton");
   const openBlackListButton = document.getElementById("openBlackListButton");
-  const resetButton = document.getElementById("resetButton");
 
   saveButton.addEventListener("click",() => {
     chrome.tabs.query({active:true,currentWindow:true},(tabs) => {
@@ -32,12 +31,4 @@ document.addEventListener("DOMContentLoaded",() => {
     window.open("../blacklist/blacklist.html");
   });
 
-  resetButton.addEventListener("click",() => {
-    const confirmed = confirm("保存しているデータを消去しますか?");
-    if(confirmed){
-      chrome.storage.local.remove("shadowBookmarks",() => {
-        alert("消去しました");
-      });
-    }
-  });
 });
