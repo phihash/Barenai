@@ -9,3 +9,40 @@
   text-align: center;
   padding: 2rem 0;
 }
+
+.saved-domains{
+  max-width: 1080px;
+  margin: 0 8%;
+  margin-top: 2rem;
+}
+
+.button{
+  background-color: #121B19;
+  color:white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-left: 0.8rem;
+}
+
+.domain-item{
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+}
+
+.text{
+  font-size: 1.1rem;
+  font-weight: bold;
+  color:rgb(45, 45, 45);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.text:hover{
+  color:rgb(84, 83, 83);
+  text-shadow: 0 0 2px #cfcdcd;
+}

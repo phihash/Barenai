@@ -14,7 +14,9 @@
 
 .saved-urls{
   max-width: 1240px;
-  margin: 2rem;
+  margin: 0 8%;
+  margin-top: 2rem;
+
 }
 
 .button{

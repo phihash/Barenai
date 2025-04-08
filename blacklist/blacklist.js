@@ -55,7 +55,11 @@ const renderDomains = () => {
 
 const createDomainUI = (domain, onDelete) => {
   const p = document.createElement("p");
+  const div = document.createElement("div");
+  p.className = "text";
+  div.className = "domain-item";
   const deleteButton = document.createElement("button");
+  deleteButton.className = "button";
   deleteButton.textContent = "削除";
   deleteButton.addEventListener("click",() => {
     const confirmed = confirm("このURLを削除しますか");
@@ -65,6 +69,7 @@ const createDomainUI = (domain, onDelete) => {
   });
   p.textContent = domain;
   p.appendChild(deleteButton);
-  return p;
+  div.appendChild(p);
+  return div;
 };
 
