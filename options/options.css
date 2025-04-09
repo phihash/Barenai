@@ -16,7 +16,18 @@
   max-width: 1240px;
   margin: 0 8%;
   margin-top: 2rem;
+}
 
+.saved-domains{
+  max-width: 1080px;
+  margin: 0 8%;
+  margin-top: 2rem;
+}
+
+.domain-item{
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
 }
 
 .button{

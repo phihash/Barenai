@@ -7,10 +7,23 @@
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
+    <form class="form-container">
+      <input type="text" id="domainInput" placeholder="ドメインを入力してください" />
+      <button type="button" id="addDomainButton" class="add-domain-button">登録</button>
+    </form>
+    <p>▼ 登録方法の例：
+
+      ・www.xxx.com → OK
+      ・help.xxx.jp → OK（サブドメインも登録が必要です）
+
+      ※「https://」や「http://」などの部分は不要です。
+      ※「www」や「news」などのサブドメインは区別されるため、必要に応じて登録してください。
+    1サイトずつ登録してください</p>
+    💡 履歴は削除されましたが、アドレスバーに予測として残ることがあります。<br>
+    その場合は、<strong>Shift + Delete</strong>（Macの場合は Shift + Fn + Delete）で個別に削除できます。
     <div class="container">
       <button class="button" id="saveButton">保存</button>
       <button class="button" id="openListButton">リスト</button>
-      <button class="button" id="openBlackListButton">登録</button>
     </div>
     <script src="popup.js"></script>
   </body>
