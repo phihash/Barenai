@@ -1,30 +1,6 @@
 document.addEventListener("DOMContentLoaded",  () => {
   renderDomains();
-  const addDomainButton = document.getElementById("addDomainButton");
-  addDomainButton.addEventListener("click",handleAdd);
 });
-
-const handleAdd = () => {
-  const text = document.getElementById("domainInput").value.trim();
-  chrome.storage.local.get(["shadowDomains"],(results) => {
-    let domains = results.shadowDomains || [];
-    if(text === ""){
-      alert("ドメインを入力してください");
-      return;
-    }
-    if(domains.includes(text)){
-      alert("このドメインはすでに保存されています");
-      return;
-    }else{
-      domains.push(text);
-      chrome.storage.local.set({shadowDomains: domains }, () => {
-        console.log("shadowDomainsが保存されました");
-      });
-    }
-  text.value = "";
-  renderDomains();
-  })
-}
 
 const handleDelete = (domain) => {
   chrome.storage.local.get(["shadowDomains"], (results) => {
@@ -39,7 +15,6 @@ const handleDelete = (domain) => {
 const renderDomains = () => {
   const savedDomains = document.getElementById("savedDomains");
   savedDomains.innerHTML = ""; // 一旦クリア
-  document.getElementById("domainInput").value = ""; // 入力フィールドをクリア
   chrome.storage.local.get(["shadowDomains"],(results) => {
     let domains = results.shadowDomains || [];
     if(domains.length === 0){
@@ -47,8 +22,8 @@ const renderDomains = () => {
       return;
     }
     domains.forEach((domain) => {
-      const p = createDomainUI(domain , handleDelete );
-      savedDomains.appendChild(p);
+      const div = createDomainUI(domain , handleDelete );
+      savedDomains.appendChild(div);
     });
   });
 };
