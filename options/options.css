@@ -16,6 +16,11 @@
   margin-top: 2rem;
 }
 
+.show-urls-header{
+  display: flex;
+  align-items: center;
+}
+
 .saved-urls{
   max-width: 1240px;
   margin: 0 8%;
