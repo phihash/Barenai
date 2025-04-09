@@ -5,8 +5,51 @@
 
 body {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", sans-serif;
-  width: 360px;
+  width: 540px;
+  align-items: center;
 }
+
+.form-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1.8rem 0;
+  padding-left: 3rem;
+}
+
+input[type="text"],
+.add-domain-button {
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+input[type="text"] {
+  width: 70%;
+  padding: 0.8rem 1.2rem;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.add-domain-button {
+  padding: 0.7rem 1.2rem;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 16px;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.add-domain-button:hover {
+  background-color: rgb(246, 246, 246);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 
 .container{
   display: flex;
