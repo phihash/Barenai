@@ -1,7 +1,21 @@
 document.addEventListener("DOMContentLoaded",() => {
+  const toggleButton = document.getElementById("toggleButton");
+  const showUrls = document.querySelector(".show-urls");
+  const showDomains = document.querySelector(".show-domains");
+  toggleButton.addEventListener("click",() => {
+    if(showUrls.classList.contains("is-hidden")){
+      showUrls.classList.remove("is-hidden");
+      showDomains.classList.add("is-hidden");
+      toggleButton.textContent = "ドメインの表示";
+
+    }else if(showDomains.classList.contains("is-hidden")){
+      showDomains.classList.remove("is-hidden");
+      showUrls.classList.add("is-hidden");
+      toggleButton.textContent = "URLの表示";
+    }
+  });
   renderBookmarks();
   renderDomains();
-
 });
 
 const renderBookmarks = () => {
