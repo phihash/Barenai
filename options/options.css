@@ -6,10 +6,19 @@
   vertical-align: middle;
 }
 
+.is-hidden{
+  display: none;
+}
+
 .sub-title{
   text-align: center;
   padding: 0.4rem 0;
   margin-top: 2rem;
+}
+
+.show-urls-header{
+  display: flex;
+  align-items: center;
 }
 
 .saved-urls{
