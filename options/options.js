@@ -4,12 +4,18 @@ document.addEventListener("DOMContentLoaded",() => {
   const showDomains = document.querySelector(".show-domains");
   const savedAllUrlButton = document.getElementById("savedAllUrlButton");
   const deleteAllDomainButton = document.getElementById("deleteAllDomainButton");
+  const deleteAllUrlButton = document.getElementById("deleteAllUrlButton");
+
+  deleteAllDomainButton.addEventListener("click",deleteAllDomain);
+  deleteAllUrlButton.addEventListener("click",deleteAllUrl);
+  savedAllUrlButton.addEventListener("click",savedAllUrl);
 
   toggleButton.addEventListener("click",() => {
     if(showUrls.classList.contains("is-hidden")){
       showUrls.classList.remove("is-hidden");
       showDomains.classList.add("is-hidden");
       savedAllUrlButton.className = "saved-all-url-button";
+      deleteAllUrlButton.className = "delete-all-url-button";
       deleteAllDomainButton.className = "is-hidden";
       toggleButton.textContent = "ドメインの表示";
 
@@ -17,6 +23,7 @@ document.addEventListener("DOMContentLoaded",() => {
       showDomains.classList.remove("is-hidden");
       showUrls.classList.add("is-hidden");
       savedAllUrlButton.className = "is-hidden";
+      deleteAllUrlButton.className = "is-hidden";
       deleteAllDomainButton.className = "delete-all-domain-button";
       toggleButton.textContent = "URLの表示";
     }
@@ -40,6 +47,45 @@ const renderDomains = () => {
     });
   });
 };
+
+const deleteAllDomain = () => {
+   const confirmed = confirm("保存されたドメインを全て削除しますか");
+   if(confirmed){
+     chrome.storage.local.set({ shadowDomains: [] }, () => {
+       renderDomains();
+       console.log("全ドメイン削除しました");
+     });
+   }
+}
+
+const deleteAllUrl = () => {
+   const confirmed = confirm("保存されたURLを全て削除しますか");
+   if(confirmed){
+     chrome.storage.local.set({ shadowBookmarks: [] }, () => {
+       renderBookmarks();
+       console.log("全URL削除しました");
+     });
+   }
+}
+
+const savedAllUrl = () => {
+  chrome.storage.local.get(["shadowBookmarks"],(results) => {
+    let shadowBookmarks = results.shadowBookmarks || [];
+    if(shadowBookmarks.length === 0){
+      alert("保存されたURLはありません");
+      return;
+    }
+    const text = shadowBookmarks.map((bookmark) => {
+      return `${bookmark.title} - ${bookmark.url}`;
+    }).join("\n");
+
+    navigator.clipboard.writeText(text).then(() => {
+      console.log("保存されたURLをクリップボードにコピーしました");
+    }).catch((e) => {
+      console.error("クリップボードへのコピーに失敗しました", e);
+    })
+  });
+}
 
 const renderBookmarks = () => {
   const savedUrls = document.getElementById("savedUrls");
