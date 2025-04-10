@@ -3,22 +3,85 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
-
+  vertical-align: middle;
 }
 
-.title{
-  text-align: center;
-  padding: 2rem 0;
+.toggle-button-container{
+  display: flex;
+  justify-content: end;
+  padding: 2.4rem 2rem 0 ;
+  padding-right: 10%;
+  gap: 0.8rem;
 }
 
-.sub-title{
-  text-align: center;
-  padding: 0.4rem 0;
+.delete-all-domain-button , .saved-all-url-button , .toggle-button{
+  background-color: #121B19;
+  color:white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: block;
 }
 
+.is-hidden{
+  display: none;
+}
+
+.delete-all-domain-button{
+   background-color: #d73131;
+}
+
+.saved-all-url-button{
+    background-color: #4b8f4b;
+}
 
 .saved-urls{
   max-width: 1240px;
-  margin: 2rem;
+  margin: 0 8%;
+  margin-top: 2rem;
 }
 
+.saved-domains{
+  max-width: 1080px;
+  margin: 0 8%;
+  margin-top: 2rem;
+}
+
+.domain-item{
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+}
+
+.button{
+  background-color: #121B19;
+  color:white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  margin-left: 0.8rem;
+}
+
+.text{
+  font-size: 1.1rem;
+  font-weight: bold;
+  color:rgb(45, 45, 45);
+  transition: color 0.3s ease;
+}
+
+.text:hover{
+  color:rgb(84, 83, 83);
+  text-shadow: 0 0 2px #cfcdcd;
+}
+
+.list-item{
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+}
