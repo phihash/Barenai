@@ -14,7 +14,7 @@
   gap: 0.8rem;
 }
 
-.delete-all-domain-button , .saved-all-url-button , .toggle-button{
+.delete-all-domain-button , .delete-all-url-button , .saved-all-url-button , .toggle-button{
   background-color: #121B19;
   color:white;
   font-size: 0.7rem;
@@ -30,7 +30,7 @@
   display: none;
 }
 
-.delete-all-domain-button{
+.delete-all-domain-button , .delete-all-url-button {
    background-color: #d73131;
 }
 
