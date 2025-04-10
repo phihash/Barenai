@@ -8,20 +8,19 @@
 </head>
 <body>
 
-    <div class="show-urls">
-      <div class="show-urls-header">
-        <h2 class="sub-title">保存済みURLとタイトル</h2>
-        <button id="toggleButton">ドメインの表示</button>
-      </div>
-      <div id="savedUrls" class="saved-urls"></div>
-    </div>
+  <div class="toggle-button-container">
+    <button class="delete-all-domain-button is-hidden" id="deleteAllDomainButton">全てのドメインを削除</button>
+    <button class="saved-all-url-button" id="savedAllUrlButton">全てのURLを保存</button>
+    <button class="toggle-button" id="toggleButton">ドメインの表示</button>
+  </div>
 
-    <div class="show-domains is-hidden">
-      <div class="show-domains-header">
-        <h2 class="sub-title">保存したドメイン</h2>
-      </div>
-      <div class="saved-domains" id="savedDomains"></div>
-    </div>
+  <div class="show-urls">
+    <div id="savedUrls" class="saved-urls"></div>
+  </div>
+
+  <div class="show-domains is-hidden">
+    <div class="saved-domains" id="savedDomains"></div>
+  </div>
 
   <script src="options.js"></script>
 </body>
