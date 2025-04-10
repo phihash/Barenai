@@ -57,7 +57,7 @@ const handleAdd = () => {
     }else{
       domains.push(text);
       chrome.storage.local.set({shadowDomains: domains }, () => {
-        console.log("shadowDomainsが保存されました");
+        console.log(`${text}が保存されました`);
       });
     }
   domainInput.value = "";

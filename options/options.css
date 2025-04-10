@@ -6,19 +6,36 @@
   vertical-align: middle;
 }
 
+.toggle-button-container{
+  display: flex;
+  justify-content: end;
+  padding: 2.4rem 2rem 0 ;
+  padding-right: 10%;
+  gap: 0.8rem;
+}
+
+.delete-all-domain-button , .saved-all-url-button , .toggle-button{
+  background-color: #121B19;
+  color:white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: block;
+}
+
 .is-hidden{
   display: none;
 }
 
-.sub-title{
-  text-align: center;
-  padding: 0.4rem 0;
-  margin-top: 2rem;
+.delete-all-domain-button{
+   background-color: #d73131;
 }
 
-.show-urls-header{
-  display: flex;
-  align-items: center;
+.saved-all-url-button{
+    background-color: #4b8f4b;
 }
 
 .saved-urls{
@@ -48,7 +65,6 @@
   border: none;
   border-radius: 1rem;
   cursor: pointer;
-  display: block;
   margin-left: 0.8rem;
 }
 
