@@ -10,11 +10,9 @@ body {
 }
 
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 2rem 1.8rem 0;
 }
+
 
 input[type="text"],
 .add-domain-button {
@@ -32,6 +30,19 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
+}
+
+.validation-message {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  margin-top: 0.8rem;
+  margin-left: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.validation-message.show {
+  opacity: 1;
 }
 
 .add-domain-button {

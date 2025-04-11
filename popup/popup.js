@@ -1,14 +1,3 @@
-const extractRootDomain = (url) => {
-  try {
-    const hostname = new URL(url).hostname;
-    const parsed = window.psl.parse(hostname); // ←ここが重要
-    return parsed.domain;
-  } catch (e) {
-    console.error("無効なURLです:", e);
-    return null;
-  }
-};
-
 document.addEventListener("DOMContentLoaded",() => {
   const saveButton = document.getElementById("saveButton");
   const openListButton = document.getElementById("openListButton");
@@ -28,8 +17,9 @@ document.addEventListener("DOMContentLoaded",() => {
         if(!isAlreadySaved){
          shadowBookmarks.push({url:currentTab.url,title:currentTab.title});
          chrome.storage.local.set({shadowBookmarks});
+         showValidationMessage(`${currentTab.title}がリストに保存されました`);
         }else{
-          alert("すでにこのタブの情報は保存されています");
+          showValidationMessage("すでにこのページはリストに保存されています");
         }
       });
     });
@@ -40,24 +30,48 @@ document.addEventListener("DOMContentLoaded",() => {
   });
 });
 
+const showValidationMessage = (text) => {
+  const msg = document.getElementById("validationMessage");
+  msg.textContent = text;
+  msg.classList.add("show");
+
+  // 一定時間後に非表示に
+  setTimeout(() => {
+    msg.classList.remove("show");
+    msg.textContent = "";
+  }, 2500);
+};
+
+const extractRootDomain = (url) => {
+  try {
+    const hostname = new URL(url).hostname;
+    const parsed = window.psl.parse(hostname);
+    return parsed.domain;
+  } catch (e) {
+    console.error("無効なURLです:", e);
+    return null;
+  }
+};
+
+
 const handleAdd = () => {
   const domainInput = document.getElementById("domainInput");
   const text = extractRootDomain(domainInput.value.trim());
     if(!text){
-      alert("URLを入力してください");
+      domainInput.value = "";
+      showValidationMessage("有効なURLを入力してください");
       return;
     }
   chrome.storage.local.get(["shadowDomains"],(results) => {
     let domains = results.shadowDomains || [];
-
     if(domains.includes(text)){
-      alert("このドメインはすでに保存されています");
       domainInput.value = "";
+      showValidationMessage("すでにドメインリストに保存されています");
       return;
     }else{
       domains.push(text);
       chrome.storage.local.set({shadowDomains: domains }, () => {
-        console.log(`${text}が保存されました`);
+        showValidationMessage(`${text}がドメインリストに保存されました`);
       });
     }
   domainInput.value = "";
