@@ -43,13 +43,13 @@ document.addEventListener("DOMContentLoaded",() => {
 const handleAdd = () => {
   const domainInput = document.getElementById("domainInput");
   const text = extractRootDomain(domainInput.value.trim());
-  console.log(text);
-  chrome.storage.local.get(["shadowDomains"],(results) => {
-    let domains = results.shadowDomains || [];
-    if(text === ""){
+    if(!text){
       alert("URLを入力してください");
       return;
     }
+  chrome.storage.local.get(["shadowDomains"],(results) => {
+    let domains = results.shadowDomains || [];
+
     if(domains.includes(text)){
       alert("このドメインはすでに保存されています");
       domainInput.value = "";

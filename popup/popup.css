@@ -11,10 +11,9 @@ body {
 
 .form-container {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
   padding: 2rem 1.8rem 0;
-  padding-left: 3rem;
 }
 
 input[type="text"],
