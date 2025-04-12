@@ -1,3 +1,4 @@
+import { showMessage } from "../libs/message.js";
 document.addEventListener("DOMContentLoaded",() => {
   const saveButton = document.getElementById("saveButton");
   const openListButton = document.getElementById("openListButton");
@@ -17,9 +18,9 @@ document.addEventListener("DOMContentLoaded",() => {
         if(!isAlreadySaved){
          shadowBookmarks.push({url:currentTab.url,title:currentTab.title});
          chrome.storage.local.set({shadowBookmarks});
-         showValidationMessage(`${currentTab.title}がリストに保存されました`);
+         showMessage("validationMessage",`${currentTab.title}がリストに保存されました`);
         }else{
-          showValidationMessage("すでにこのページはリストに保存されています");
+          showMessage("validationMessage","すでにこのページはリストに保存されています");
         }
       });
     });
@@ -29,18 +30,6 @@ document.addEventListener("DOMContentLoaded",() => {
     chrome.runtime.openOptionsPage();
   });
 });
-
-const showValidationMessage = (text) => {
-  const msg = document.getElementById("validationMessage");
-  msg.textContent = text;
-  msg.classList.add("show");
-
-  // 一定時間後に非表示に
-  setTimeout(() => {
-    msg.classList.remove("show");
-    msg.textContent = "";
-  }, 2500);
-};
 
 const extractRootDomain = (url) => {
   try {
@@ -59,19 +48,19 @@ const handleAdd = () => {
   const text = extractRootDomain(domainInput.value.trim());
     if(!text){
       domainInput.value = "";
-      showValidationMessage("有効なURLを入力してください");
+      showMessage("validationMessage","有効なURLを入力してください");
       return;
     }
   chrome.storage.local.get(["shadowDomains"],(results) => {
     let domains = results.shadowDomains || [];
     if(domains.includes(text)){
       domainInput.value = "";
-      showValidationMessage("すでにドメインリストに保存されています");
+      showMessage("validationMessage","すでにドメインリストに保存されています");
       return;
     }else{
       domains.push(text);
       chrome.storage.local.set({shadowDomains: domains }, () => {
-        showValidationMessage(`${text}がドメインリストに保存されました`);
+        showMessage("validationMessage",`${text}がドメインリストに保存されました`);
       });
     }
   domainInput.value = "";

@@ -1,3 +1,4 @@
+import { showMessage } from "../libs/message.js";
 document.addEventListener("DOMContentLoaded",() => {
   const toggleButton = document.getElementById("toggleButton");
   const showUrls = document.querySelector(".show-urls");
@@ -53,7 +54,7 @@ const deleteAllDomain = () => {
    if(confirmed){
      chrome.storage.local.set({ shadowDomains: [] }, () => {
        renderDomains();
-       console.log("全ドメイン削除しました");
+       showMessage("messageArea","全ドメイン削除しました");
      });
    }
 }
@@ -63,7 +64,7 @@ const deleteAllUrl = () => {
    if(confirmed){
      chrome.storage.local.set({ shadowBookmarks: [] }, () => {
        renderBookmarks();
-       console.log("全URL削除しました");
+       showMessage("messageArea","全URL削除しました");
      });
    }
 }
@@ -72,7 +73,7 @@ const savedAllUrl = () => {
   chrome.storage.local.get(["shadowBookmarks"],(results) => {
     let shadowBookmarks = results.shadowBookmarks || [];
     if(shadowBookmarks.length === 0){
-      alert("保存されたURLはありません");
+      showMessage("messageArea","保存されたURLはありません");
       return;
     }
     const text = shadowBookmarks.map((bookmark) => {
@@ -80,8 +81,9 @@ const savedAllUrl = () => {
     }).join("\n");
 
     navigator.clipboard.writeText(text).then(() => {
-      console.log("保存されたURLをクリップボードにコピーしました");
+      showMessage("messageArea","保存されたURLをクリップボードにコピーしました");
     }).catch((e) => {
+      showMessage("messageArea","クリップボードへのコピーに失敗しました");
       console.error("クリップボードへのコピーに失敗しました", e);
     })
   });
