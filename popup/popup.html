@@ -9,13 +9,17 @@
   <body>
     <form class="form-container">
       <input type="text" id="domainInput" placeholder="URLを入力してください" />
+    <div id="validationMessage" class="validation-message"></div>
+
     </form>
     <div class="container">
-      <button class="button" id="saveButton">このページを保存</button>
       <button class="button" id="openListButton">リスト</button>
-      <button type="button" id="addDomainButton" class="add-domain-button">登録</button>
+      <button class="button" id="saveButton">現在のページを保存</button>
+      <button type="button" id="addDomainButton" class="add-domain-button">ドメインリスト登録</button>
     </div>
+    <div id="toastContainer"></div>
     <script src="../libs/psl.min.js"></script>
-    <script src="./popup.js"></script>
+    <script type="module" src="../libs/message.js"></script>
+    <script type="module" src="./popup.js"></script>
   </body>
 </html>

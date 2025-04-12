@@ -1,14 +1,4 @@
-const extractRootDomain = (url) => {
-  try {
-    const hostname = new URL(url).hostname;
-    const parsed = window.psl.parse(hostname); // ←ここが重要
-    return parsed.domain;
-  } catch (e) {
-    console.error("無効なURLです:", e);
-    return null;
-  }
-};
-
+import { showMessage } from "../libs/message.js";
 document.addEventListener("DOMContentLoaded",() => {
   const saveButton = document.getElementById("saveButton");
   const openListButton = document.getElementById("openListButton");
@@ -28,8 +18,9 @@ document.addEventListener("DOMContentLoaded",() => {
         if(!isAlreadySaved){
          shadowBookmarks.push({url:currentTab.url,title:currentTab.title});
          chrome.storage.local.set({shadowBookmarks});
+         showMessage("validationMessage",`${currentTab.title}がリストに保存されました`);
         }else{
-          alert("すでにこのタブの情報は保存されています");
+          showMessage("validationMessage","すでにこのページはリストに保存されています");
         }
       });
     });
@@ -40,24 +31,36 @@ document.addEventListener("DOMContentLoaded",() => {
   });
 });
 
+const extractRootDomain = (url) => {
+  try {
+    const hostname = new URL(url).hostname;
+    const parsed = window.psl.parse(hostname);
+    return parsed.domain;
+  } catch (e) {
+    console.error("無効なURLです:", e);
+    return null;
+  }
+};
+
+
 const handleAdd = () => {
   const domainInput = document.getElementById("domainInput");
   const text = extractRootDomain(domainInput.value.trim());
-  console.log(text);
-  chrome.storage.local.get(["shadowDomains"],(results) => {
-    let domains = results.shadowDomains || [];
-    if(text === ""){
-      alert("URLを入力してください");
+    if(!text){
+      domainInput.value = "";
+      showMessage("validationMessage","有効なURLを入力してください");
       return;
     }
+  chrome.storage.local.get(["shadowDomains"],(results) => {
+    let domains = results.shadowDomains || [];
     if(domains.includes(text)){
-      alert("このドメインはすでに保存されています");
       domainInput.value = "";
+      showMessage("validationMessage","すでにドメインリストに保存されています");
       return;
     }else{
       domains.push(text);
       chrome.storage.local.set({shadowDomains: domains }, () => {
-        console.log(`${text}が保存されました`);
+        showMessage("validationMessage",`${text}がドメインリストに保存されました`);
       });
     }
   domainInput.value = "";
