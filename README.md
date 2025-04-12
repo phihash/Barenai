@@ -1,6 +1,6 @@
-# Shadow History Extension
+# バレナイ（Barenai）
 
-「Shadow History Extension」は、**選んだドメインの履歴だけを自動で削除**できるChrome拡張機能です。
+「Barenai」は、**選んだドメインの履歴だけを自動で削除**できるChrome拡張機能です。
 一方で残しておきたいページは事前に保存することで、**自分にとって都合の良い履歴管理**ができます。
 
 ---

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ShadowExtension",
+  "name": "バレナイ",
   "version": "1.0.0",
-  "description": "履歴に残したくないURLを保存。ページ離脱時に自動で履歴削除するChrome拡張機能",
+  "description": "ページ離脱時に自動で履歴削除し、履歴に残したくないURLを保存するChrome拡張機能",
   "background": {
     "service_worker": "background.js"
   },
