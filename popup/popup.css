@@ -34,6 +34,11 @@ input[type="text"]:focus {
   outline: none;
 }
 
+.validation-message-container{
+  display: flex;
+  justify-content: center;
+}
+
 .validation-message {
   color: #d32f2f;
   font-size: 0.75rem;
